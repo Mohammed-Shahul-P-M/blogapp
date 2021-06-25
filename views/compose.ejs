@@ -1,0 +1,44 @@
+<%- include("partials/header"); -%>
+<style>
+  .post{
+    background-color: rgb(210, 226, 240);
+    margin: 10px 0;
+  }
+  .post button{
+    margin: 10px; 
+    border: none;
+    outline: none;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  .editbtn{
+    background-color: rgb(0, 85, 255)!important;
+  }
+</style>
+
+<h1>Compose</h1>
+    <form class="" action="/admin/compose" method="post">
+      <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" type="text" name="postTitle">
+        <label>Post</label>
+        <textarea class="form-control" name="postBody" rows="5" cols="30"></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit" name="button">Publish</button>
+    </form>
+
+   <div class="allPost">
+     <h1>All Post</h1>
+     <% posts.forEach(p=>{ %>
+      <div class="post">
+        <h3><%=p.title%></h3> 
+        <p class="content"><%=p.content.substring(0,100)+'...'%></p>
+        <button onclick="location.replace('/admin/edit/<%=p._id%>')" class="editbtn">Edit</button>
+        <button onclick="location.replace('/admin/delete/<%=p._id%>')">Delete</button>
+      </div>
+     <% }) %>
+   </div>
+   <%- include("partials/footer"); -%>
+ 

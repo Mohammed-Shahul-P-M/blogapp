@@ -1,0 +1,48 @@
+<%- include("partials/header"); -%>
+<style>
+    .login{
+        position: absolute;
+        width: 90%;
+        max-width: 300px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 10px;
+        text-align: center;
+        padding-bottom: 35px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    input{
+        width: 90%;
+        margin: 5% 5% 0;
+        font-size: 2rem;
+        border: 1px solid rgb(73, 71, 71);
+        border-radius: 6px;
+    }
+    h3{
+        color: rgb(16, 194, 102);
+    }
+    input[type='submit']{
+        background-color: rgb(16, 194, 102);
+        color: white;
+        border-radius: 6px;
+        border: none;
+        outline: none;
+    }
+</style>
+<div class="login">
+<form action="/admin/login" method="post">
+    <h3>Admin</h3>
+    <input type="text" required placeholder="Username" name="uname">
+    <input type="password" required placeholder="Password" name="psw">
+    <input type="submit" value="Login">
+</form>   
+</div>
+<% if(err)  { %>
+  <script>
+    alert('Username or Password is incorrect')
+  </script>
+<% } %>
+
+<%- include("partials/footer"); -%>
